@@ -13,18 +13,12 @@ class XCalendarDay extends LitElement {
     }
 
     constructor(){
-        
+
         super();
         this.date = new Date;
 
-    }
+    }    
     
-    /*
-    get date() {
-        return new Date(this.dataset.date);
-    }*/
-
-
     render() {        
         return html`<div>${this.date.getDate()}</div>`;
     }
