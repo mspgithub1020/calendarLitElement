@@ -80,9 +80,9 @@ class XCalendarMonth extends LitElement {
            return html`<x-calendar-weekday .day=${wd}></x-calendar-weekday>`
         });
     }
-    _renderDays(day) {
-        const daysToShow = MonthHelper.getDays(this.date, config.startDate, config.rows * DAYS_PER_WEEK);
-        return daysToShow.map(this._renderDay);
+    _renderDays() {
+        const daysToShow = MonthHelper.getDays(this.date, config.startDay, config.monthRows * DAYS_PER_WEEK);
+        return daysToShow.map(this._renderDay.bind(this));
     }
     _renderDay(day) {
         const classForDay = this._getClassesForDay(day);
