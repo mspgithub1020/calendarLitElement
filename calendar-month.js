@@ -5,10 +5,8 @@ import { dateService } from './date-service.js'
 import { WEEKDAY_LETTERS } from './date-constants.js'
 
 import './calendar-day.js';
-
 import './calendar-weekday.js';
 
-import './styles/styleguide.css';
 
 const DAYS_PER_WEEK = 7;
 

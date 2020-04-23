@@ -1,7 +1,5 @@
-import { LitElement, html, css } from 'htps://cdn.pika.dev/lit-element';
-//import { calendarNavigation } from './calendar-navigation.js';
+import { LitElement, html, css } from 'https://cdn.pika.dev/lit-element';
 import { dateService } from './date-service.js';
-//import { calendarMonth } from './calendar-month.js';
 
 import './calendar-month.js';
 import './calendar-navigation.js';
@@ -45,7 +43,7 @@ class XCalendarBody extends LitElement{
     render(){
         return html`
             <x-calendar-month .date=${this.selectedDate}></x-calendar-month>
-            <x-calendar-navigation @next=${_onNext} @previous=${_onPrevious}></x-calendar-navigation>
+            <x-calendar-navigation @next=${this._onNext} @previous=${this._onPrevious}></x-calendar-navigation>
         `
     }
 }
