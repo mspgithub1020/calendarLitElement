@@ -8,6 +8,8 @@ import './calendar-day.js';
 
 import './calendar-weekday.js';
 
+import './styles/styleguide.css';
+
 const DAYS_PER_WEEK = 7;
 
 /*
@@ -28,44 +30,66 @@ class XCalendarMonth extends LitElement {
     //1
     static get styles(){
         return css`
-            .calendar-day {
-                color: red;
-                width: 20px:
-                height: 20px;
+
+            :host {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                grid-template-rows: repeat(7, 1fr);
+                gap: var(--x-margin-small);
+                justify-items: stretch;
+                font-size: var(--x-font-tiny);
             }
-            .calendar-day--today{
-                background-color: blue;
+            
+            x-calendar-day {
+                box-sizing: border-box;
+                cursor: pointer;
+                
             }
-            .calendar-day--outside{
-                color: grey;
+            
+            .x-calendar-day--outside {
+                color: var(--x-color-primary--light);
             }
-        `
-        // <div class="clase1 clase clase3">
+            
+            .x-calendar-day--today {
+                background-color: var(--x-color-secondary);
+            }
+            
+            .x-calendar-day--selected {
+                border: 1px solid var(--x-color-secondary);
+            }
+            
+            .x-month__item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+        `        
     }
     static get properties() {
         return {
             date: { type: Object }  //para pintar .. datos de entrada de mis componentes
-
-            
+          
         }
     }
-    constructor() {
-        super();
-        this.date = dateService.date;
-    }
-    //2
+     //2
     connectedCallback() {
         super.connectedCallback();
+        this.addEventListener('click', this._onClick);
         dateService.on(dateService.DAY_CHANGED, this._onDayChanged);
     }
     diconnectedCallback() {
         super.diconnectedCallback();
+        this.removeEventLstener('click',this._onClick);
         dateService.off(dateService.DAY_CHANGED, this._onDayChanged);
-
     }
+
+    
     _onDayChanged = (date) => {
         this.date = date;
     }
+    
+
     //3
     _getWeekDays() {
         const days = [];
@@ -116,6 +140,7 @@ class XCalendarMonth extends LitElement {
     //7- Si se pincha en un dia le pone la clase x-calendar-date--selected y al elemento
     //   que ya tenia esa clase se le quita
 
+    // donde esta el listener?
     _onClick = (ev) => {
         const newSelectedDay = this._findCalendarDay(ev.path);
         if(!newSelectedDay){
