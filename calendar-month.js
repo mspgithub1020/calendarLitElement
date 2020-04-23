@@ -44,7 +44,9 @@ class XCalendarMonth extends LitElement {
     }
     static get properties() {
         return {
-            date: { type: Object }
+            date: { type: Object }  //para pintar .. datos de entrada de mis componentes
+
+            
         }
     }
     constructor() {
@@ -92,7 +94,7 @@ class XCalendarMonth extends LitElement {
         
         let classes = 'x-calendar-day';
         if(dateService.isToday(day)){
-            classes += ' x-calendar-day--today';
+            classes += ' x-calendar-day--today x-calendar-day--selected';
         }
         if(day.getMonth() !== this.date.getMonth()){
             classes += ' x-calendar-day--outside';
@@ -109,6 +111,23 @@ class XCalendarMonth extends LitElement {
         */
 
         return classes;
+    }
+
+    //7- Si se pincha en un dia le pone la clase x-calendar-date--selected y al elemento
+    //   que ya tenia esa clase se le quita
+
+    _onClick = (ev) => {
+        const newSelectedDay = this._findCalendarDay(ev.path);
+        if(!newSelectedDay){
+            return;
+        }
+        // https://developer.mozilla.org/es/docs/Web/API/Element/classList
+        const selectedDay = this.renderRoot.querySelector('.x-calendar-day--selected');
+        selectedDay && selectedDay.classList.remove('x-calendar-day--selected');
+        newSelectedDay.classList.add('x-calendar-day--selected');
+    }
+    _findCalendarDay(path){
+        return path.find((el) => el.localName === 'x-calendar-day');
     }
     render(){
         return html`

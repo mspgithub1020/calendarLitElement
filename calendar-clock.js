@@ -16,6 +16,10 @@ class XCalendarClock extends LitElement {
         this.date = dataService.date;
         
     }
+    get timeString(){
+        return
+        DateFormatter.timeString(dateService.date);
+    }
     //cada segundo hace una callback para actualizar los segundos
     connectedCallback() {
         super.connectedCallback();
@@ -31,7 +35,7 @@ class XCalendarClock extends LitElement {
     }
     render() {
         return html`
-            <p class="x-clock" id="text">${this.timeString}</p>
+            <p class="x-clock">${this.timeString}</p>
         `;
     }
 }
