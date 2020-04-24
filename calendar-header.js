@@ -1,12 +1,13 @@
-import { LitElement, html } from 'lit-element';
-import {calendarClock} from './calendar-clock.js';
-import {calendarDate} from  './calendar-date.js';
+import { LitElement, html, css } from 'https://cdn.pika.dev/lit-element';
+import './calendar-clock.js';
+import './calendar-date.js';
 
 class XCalendarHeader extends LitElement  {
 
-    render(){ html`
-    <x-calendar-clock></x-calendar-clock>
-    <x-calendar-date></x-calendar-date>
+    render(){
+        return html`
+            <x-calendar-clock></x-calendar-clock>
+            <x-calendar-date></x-calendar-date>
     `;
     }
 }

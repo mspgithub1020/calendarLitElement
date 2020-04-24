@@ -3,6 +3,7 @@ import { dateService } from './date-service.js';
 
 import './calendar-month.js';
 import './calendar-navigation.js';
+import './calendar-summary.js';
 
 
 class XCalendarBody extends LitElement{
@@ -42,8 +43,9 @@ class XCalendarBody extends LitElement{
     }
     render(){
         return html`
-            <x-calendar-month .date=${this.selectedDate}></x-calendar-month>
+            <x-calendar-summary .date=${this.selectedDate}></x-calendar-summary>
             <x-calendar-navigation @next=${this._onNext} @previous=${this._onPrevious}></x-calendar-navigation>
+            <x-calendar-month .date=${this.selectedDate}></x-calendar-month>
         `
     }
 }

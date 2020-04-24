@@ -13,12 +13,11 @@ class XCalendarClock extends LitElement {
 
     constructor() {
         super();
-        this.date = dataService.date;
+        this.date = dateService.date;
         
     }
     get timeString(){
-        return
-        DateFormatter.timeString(dateService.date);
+        return DateFormatter.timeString(dateService.date);
     }
     //cada segundo hace una callback para actualizar los segundos
     connectedCallback() {
@@ -30,7 +29,7 @@ class XCalendarClock extends LitElement {
         super.disconnectedCallback();
         dateService.off(dateService.SECOND_CHANGED, this._onSecondChanged);
     }
-    _onSecondChanged = () => {
+    _onSecondChanged = (date) => {
         this.date = date;
     }
     render() {
@@ -40,4 +39,4 @@ class XCalendarClock extends LitElement {
     }
 }
  
-window.customElements.define('x-clock', XCalendarClock);
+window.customElements.define('x-calendar-clock', XCalendarClock);

@@ -33,60 +33,32 @@ class XCalendarMonth extends LitElement {
                 display: grid;
                 grid-template-columns: repeat(7, 1fr);
                 grid-template-rows: repeat(7, 1fr);
-                gap: var(--x-margin-small);
-                justify-items: stretch;
-                font-size: var(--x-font-tiny);
-            }
-            
-            x-calendar-day {
-                box-sizing: border-box;
-                cursor: pointer;
                 
             }
-            
-            .x-calendar-day--outside {
-                color: var(--x-color-primary--light);
-            }
-            
-            .x-calendar-day--today {
-                background-color: var(--x-color-secondary);
-            }
-            
-            .x-calendar-day--selected {
-                border: 1px solid var(--x-color-secondary);
-            }
-            
-            .x-month__item {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            
         `        
     }
     static get properties() {
         return {
-            date: { type: Object }  //para pintar .. datos de entrada de mis componentes
-          
+            date: { type: Object }  //para pintar .. datos de entrada de mis componentes          
         }
     }
      //2
     connectedCallback() {
         super.connectedCallback();
         this.addEventListener('click', this._onClick);
-        dateService.on(dateService.DAY_CHANGED, this._onDayChanged);
+        //dateService.on(dateService.DAY_CHANGED, this._onDayChanged);
     }
     diconnectedCallback() {
         super.diconnectedCallback();
         this.removeEventLstener('click',this._onClick);
-        dateService.off(dateService.DAY_CHANGED, this._onDayChanged);
+        //dateService.off(dateService.DAY_CHANGED, this._onDayChanged);
     }
 
-    
+    /*
     _onDayChanged = (date) => {
         this.date = date;
     }
-    
+    */
 
     //3
     _getWeekDays() {
@@ -154,10 +126,8 @@ class XCalendarMonth extends LitElement {
     }
     render(){
         return html`
-            <div>
                 ${this._renderWeekdays()}
                 ${this._renderDays()}
-            </div>
         `
     }
 }
