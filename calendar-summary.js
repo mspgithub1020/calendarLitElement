@@ -11,6 +11,20 @@ Summary
 
 class XCalendarSummary extends LitElement {
     
+    static get style(){
+
+        return css`
+        
+            .x-summary {
+                font-size: var(--x-font-tiny);
+            }
+            
+        
+        `
+
+    }
+
+
     static get properties(){
 
         return {

@@ -2,6 +2,16 @@ import { LitElement, html } from 'https://cdn.pika.dev/lit-element';
 
 class XCalendarNavigation extends LitElement {
 
+    static get style(){
+
+        return css`        
+            .x-navigation__icon {
+                fill: var(--x-color-text-primary);
+                cursor: pointer;
+            } 
+        `
+    }
+
     _onPrevious(){
         /*Para hacer que un evento personalizado pase a través de los límites 
          de DOM, debe establecerse composed y bubbles true. */
@@ -9,15 +19,14 @@ class XCalendarNavigation extends LitElement {
            bubbles: true,
            composed: true,
         });
-        this.dispatchEvent(Event);
+        this.dispatchEvent(event);  
 
     }
 
     _onNext(){
         const event = new CustomEvent("next",{
             bubbles: true,
-            composed: true,
-            
+            composed: true,            
         });
         this.dispatchEvent(event);
 
@@ -26,8 +35,8 @@ class XCalendarNavigation extends LitElement {
     render(){
         return html`
         <div>
-        <button @click=${this._onPrevious}>-</button>
-        <button @click=${this._onNext}>+</button>
+        <button class="x-navigation" @click=${this._onPrevious}>-</button>
+        <button class="x-navigation" @click=${this._onNext}>+</button>
         </div>
         `;
         /*ponemos this para referirnos a su instancia de elemento dentro de

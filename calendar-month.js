@@ -26,15 +26,35 @@ Componente x-calendar-month
 
 class XCalendarMonth extends LitElement {
     //1
-    static get styles(){
+    
         return css`
 
             :host {
                 display: grid;
                 grid-template-columns: repeat(7, 1fr);
                 grid-template-rows: repeat(7, 1fr);
-                
+                gap: var(--x-margin-small);
+                justify-items: stretch;
+                font-size: var(--x-font-tiny);                
             }
+
+            .x-calendar-day {
+                box-sizing: border-box;
+                cursor: pointer;                
+            }
+            
+            .xstatic get styles(){-calendar-day--outside {
+                color: var(--x-color-primary--light);
+            }
+            
+            .x-calendar-day--today {
+                background-color: var(--x-color-secondary);
+            }
+            
+            .x-calendar-day--selected {
+                border: 1px solid var(--x-color-secondary);
+            }
+
         `        
     }
     static get properties() {

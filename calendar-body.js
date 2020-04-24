@@ -7,6 +7,20 @@ import './calendar-summary.js';
 
 
 class XCalendarBody extends LitElement{
+
+    static get style(){
+
+        return css`
+        
+            .x-body__top {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: var(--x-margin-small);
+            }
+            
+        `
+    }
+
     static get properties(){
         return{
             selectedDate:{type: Object}
@@ -43,8 +57,10 @@ class XCalendarBody extends LitElement{
     }
     render(){
         return html`
-            <x-calendar-summary .date=${this.selectedDate}></x-calendar-summary>
-            <x-calendar-navigation @next=${this._onNext} @previous=${this._onPrevious}></x-calendar-navigation>
+            <div class="x-body__top">
+                <x-calendar-summary .date=${this.selectedDate}></x-calendar-summary>
+                <x-calendar-navigation @next=${this._onNext} @previous=${this._onPrevious}></x-calendar-navigation>                
+            </div>
             <x-calendar-month .date=${this.selectedDate}></x-calendar-month>
         `
     }
