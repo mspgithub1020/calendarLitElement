@@ -1,4 +1,4 @@
-import { LitElement, html } from 'https://cdn.pika.dev/lit-element';
+import { LitElement, html, css} from 'https://cdn.pika.dev/lit-element';
 import { DateFormatter } from './date-formatter.js';
 
 /*
@@ -11,19 +11,15 @@ Summary
 
 class XCalendarSummary extends LitElement {
     
-    static get style(){
+    static get styles(){
 
-        return css`
-        
+        return css`        
             .x-summary {
                 font-size: var(--x-font-tiny);
-            }
-            
+            }            
         
         `
-
     }
-
 
     static get properties(){
 

@@ -8,7 +8,7 @@ import './calendar-summary.js';
 
 class XCalendarBody extends LitElement{
 
-    static get style(){
+    static get styles(){
 
         return css`
         

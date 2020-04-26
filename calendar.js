@@ -1,12 +1,34 @@
-import { LitElement, html } from 'https://cdn.pika.dev/lit-element';
+import { LitElement, html, css } from 'https://cdn.pika.dev/lit-element';//'https://cdn.pika.dev/lit-element'
 import { dateService } from './date-service.js';
 import './calendar-header.js';
 import './calendar-body.js';
 
 class XCalendar extends LitElement {
     static get styles() {
-      
+
+        return css`
+        
+            :host {
+                display: block;
+                background-color: var(--x-color-primary);
+                color: var(--x-color-text-primary);
+                width: 40%;
+                height: fit-content;
+                border: 1px solid var(--x-color-primary--light);
+            }
+            
+            .x-calendar__header {
+                border-bottom: 1px solid var(--x-color-primary--light);
+            }
+            .x-calendar__body {
+                display: block;
+                padding: var(--x-padding-small);
+            }        
+        `      
     }
+
+    
+
     connectedCallback() {
         super.connectedCallback();
         dateService.start();
@@ -21,5 +43,6 @@ class XCalendar extends LitElement {
             <x-calendar-body class="x-calendar__body"></x-calendar-body>
         `;
     }
+
 }
 customElements.define('x-calendar', XCalendar);

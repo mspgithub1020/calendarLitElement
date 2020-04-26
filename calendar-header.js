@@ -9,25 +9,21 @@ class XCalendarHeader extends LitElement  {
         return css`
             :host {
                 display: block;
-                padding: var(--x-padding-medium);
+                padding: var(--x-padding-medium);                
             }
             
             .x-header__date {
                 padding-top: var(--x-padding-tiny);
                 display: block;
-            }
-        
+            }      
         
         `
-
     }
-
-
 
     render(){
         return html`
             <x-calendar-clock></x-calendar-clock>
-            <x-calendar-date></x-calendar-date>
+            <x-calendar-date class="x-header__date"></x-calendar-date>
     `;
     }
 }

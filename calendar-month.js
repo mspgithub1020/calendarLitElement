@@ -26,7 +26,7 @@ Componente x-calendar-month
 
 class XCalendarMonth extends LitElement {
     //1
-    
+    static get styles(){
         return css`
 
             :host {
@@ -39,11 +39,15 @@ class XCalendarMonth extends LitElement {
             }
 
             .x-calendar-day {
-                box-sizing: border-box;
+                box-sizing: border-box;               
                 cursor: pointer;                
             }
             
-            .xstatic get styles(){-calendar-day--outside {
+            x-calendar-day:hover {                
+                border: 1px solid white;
+            }
+            
+            .x-calendar-day--outside {
                 color: var(--x-color-primary--light);
             }
             
@@ -53,6 +57,12 @@ class XCalendarMonth extends LitElement {
             
             .x-calendar-day--selected {
                 border: 1px solid var(--x-color-secondary);
+            }
+
+            .x-calendar-day ,.x-weekday{
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
         `        
@@ -93,7 +103,7 @@ class XCalendarMonth extends LitElement {
     }
     _renderWeekdays() {
         return this._getWeekDays().map((wd) => {
-           return html`<x-calendar-weekday .day=${wd}></x-calendar-weekday>`
+           return html`<x-calendar-weekday class="x-weekday" .day=${wd}></x-calendar-weekday>`
         });
     }
     _renderDays() {
